@@ -34,8 +34,9 @@ class Login extends Component {
     const body = this.state
     const res = await axios.post(`users/login`, body)
     // console.log(res)
-    const { meta, data } = res.data
+    const { meta, data } = res
     if (meta.status === 200) {
+      localStorage.setItem('token', data.token)
       // 去 / home
       history.push('/')
       // console.log(this.props)
